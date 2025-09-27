@@ -1,6 +1,7 @@
 {
 	"name": "OracleTable1",
 	"properties": {
+		"description": "db loja e db end loja",
 		"linkedServiceName": {
 			"referenceName": "ORACLEFIAP",
 			"type": "LinkedServiceReference"
