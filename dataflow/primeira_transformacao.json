@@ -1,6 +1,7 @@
 {
 	"name": "primeira_transformacao",
 	"properties": {
+		"description": "numero loja > numero loja da tab end loja",
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
@@ -19,7 +20,15 @@
 					"name": "endloja"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "join1"
@@ -36,7 +45,11 @@
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1"
+				"     broadcast: 'auto')~> join1",
+				"join1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
